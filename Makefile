@@ -15,27 +15,22 @@ OBJECTS_OT=ot/*.o
 OBJECTS_MIRACL= util/Miracl/*.o
 COMPILER_OPTIONS=-O3#-g
 BATCH=
-INCLUDE=-I.. 
+INCLUDE=-I..
 CFLAGS=-fpermissive
 
 all: ${DISTANCE}
-	
+
 dst: ${OBJECTS_DST} ${OBJECTS_UTIL} ${OBJECTS_MIRACL} ${OBJECTS_OT}
-	${CC} -o dst.exe ${CFLAGS} ${OBJECTS_DST} ${OBJECTS_UTIL} ${OBJECTS_MIRACL} ${OBJECTS_OT} ${MIRACL_PATH} ${LIBRARIES} ${COMPILER_OPTIONS} 
+	${CC} -o dst.exe ${CFLAGS} ${OBJECTS_DST} ${OBJECTS_UTIL} ${OBJECTS_MIRACL} ${OBJECTS_OT} ${MIRACL_PATH} ${LIBRARIES} ${COMPILER_OPTIONS}
 
-	
-${OBJECTS_DST}: ${SOURCES_DST}$
-	@cd mains; ${CC} -c ${INCLUDE} ${CFLAGS} ${COMPILER_OPTIONS}  distance_framework.cpp 
+${OBJECTS_DST}: ${SOURCES_DST}
+	cd mains; ${CC} -c ${INCLUDE} ${CFLAGS} ${COMPILER_OPTIONS} distance_framework.cpp
 
-${OBJECTS_UTIL}: ${SOURCES_UTIL}$  
-	@cd util; ${CC} -c ${INCLUDE} ${CFLAGS} ${BATCH} ${COMPILER_OPTIONS}  *.cpp
+${OBJECTS_UTIL}: ${SOURCES_UTIL}
+	cd util; ${CC} -c ${INCLUDE} ${CFLAGS} ${BATCH} ${COMPILER_OPTIONS} *.cpp
 
-${OBJECTS_OT}: ${SOURCES_OT}$
-	@cd ot; ${CC} -c ${INCLUDE} ${CFLAGS} ${BATCH} ${COMPILER_OPTIONS}  *.cpp 
-	
+${OBJECTS_OT}: ${SOURCES_OT}
+	cd ot; ${CC} -c ${INCLUDE} ${CFLAGS} ${BATCH} ${COMPILER_OPTIONS} *.cpp
+
 clean:
 	rm -rf ${OBJECTS_UTIL} ${OBJECTS_DST} ${OBJECTS_OT} dst.exe
-
-
-
-
