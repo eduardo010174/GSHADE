@@ -31,3 +31,13 @@ RUN cd util/ &&\
 
 #Compile GSHADE
 RUN make
+
+FROM ubuntu:18.04 as runner
+
+RUN apt update &&\
+    apt install -y \
+        libgmp10 \
+        libssl1.0
+
+COPY --from=1 /GSHADE/dst.exe /GSHADE/dst.exe
+WORKDIR /GSHADE

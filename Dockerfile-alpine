@@ -31,3 +31,13 @@ RUN cd util/ &&\
 
 #Compile GSHADE
 RUN make
+
+FROM alpine:3.8 as runner
+
+RUN apk update &&\
+    apk --no-cache add \
+        gmp \
+        openssl
+
+COPY --from=1 /GSHADE/dst.exe /GSHADE/dst.exe
+WORKDIR /GSHADE
