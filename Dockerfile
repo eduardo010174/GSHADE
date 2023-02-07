@@ -3,6 +3,7 @@ FROM ubuntu:18.04 as downloader
 RUN apt update &&\
     apt install -y git
 
+#Fetch repo
 RUN git clone https://github.com/eduardo010174/GSHADE.git &&\
     cd GSHADE/ &&\
     cd util/ &&\
@@ -20,11 +21,13 @@ RUN apt update &&\
 COPY --from=0 /GSHADE /GSHADE
 WORKDIR /GSHADE
 
+#Compile Miracl
 RUN cd util/ &&\
     mkdir -p ./Miracl/ &&\
     find ./MIRACL/ -type f -exec cp ${PWD}/'{}' ${PWD}/Miracl/ \; &&\
     cd ./Miracl/ &&\
     bash linux64 &&\
-    find . -type f -not -name '*.a' -not -name '*.h' -not -name '*.o' -not -name '.git*'| xargs rm &&\
-    cd ../.. &&\
-    make
+    find . -type f -not -name '*.a' -not -name '*.h' -not -name '*.o' -not -name '.git*'| xargs rm
+
+#Compile GSHADE
+RUN make
