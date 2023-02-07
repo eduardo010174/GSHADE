@@ -12,7 +12,7 @@ Privacy preserving distance computation framework for: Hamming distance, Euclide
 
 --- Compiling ---
 
-- Compile the Miracl library for elliptic curve cryptography (util/Miracl) using "bash linux" / "bash linux64" (depending on the system)
+- Compile the Miracl library for elliptic curve cryptography (util/Miracl) using "sh linux" / "sh linux64" (depending on the system)
 - Compile the distance computation framework by invoking "make" in the folder of the README file
 
 --- Execution ---
