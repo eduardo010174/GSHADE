@@ -8,7 +8,7 @@ Privacy preserving distance computation framework for: Hamming distance, Euclide
 --- Requirements ---
 - Miracl (set up in /util/Miracl/ )
 - The GMP library
-- OpenSSL
+- OpenSSL 1.0.2
 
 --- Compiling ---
 
