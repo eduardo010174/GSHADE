@@ -21,6 +21,7 @@ Privacy preserving distance computation framework for: Hamming distance, Euclide
 Currently, the server routine can be invoked by starting "./dst.exe 0" in one terminal and the connecting client can be invoked using "./dst.exe 1" in a second terminal on the same machine. The parameters can be changed in the code. 
 
 --- Current Status ---
+
 Currently, the Euclidean distance and the Scalar product have been tested and should work properly. The Hamming distance is executed but might result in the wrong result. The Normalized Hamming distance is currently not implemented, due to problems with the internal program structure. 
 
 
