@@ -7,7 +7,7 @@ RUN apt update &&\
 RUN git clone https://github.com/eduardo010174/GSHADE.git &&\
     cd GSHADE/ &&\
     cd util/ &&\
-    git clone https://github.com/miracl/MIRACL.git
+    git clone https://github.com/eduardo010174/MIRACL.git
 
 FROM ubuntu:18.04 as builder
 
@@ -27,7 +27,7 @@ RUN cd util/ &&\
     find ./MIRACL/ -type f -exec cp ${PWD}/'{}' ${PWD}/Miracl/ \; &&\
     cd ./Miracl/ &&\
     bash linux64 &&\
-    find . -type f -not -name '*.a' -not -name '*.h' -not -name '*.o' -not -name '.git*'| xargs rm
+    find . -type f -not -name '*.a' -not -name '*.h' -not -name '*.o' -not -name '.git*' | xargs rm
 
 #Compile GSHADE
 RUN make
